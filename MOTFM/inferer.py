@@ -195,6 +195,30 @@ def main():
     with open(output_path, "wb") as f:
         pickle.dump(generated_data, f)
 
+    import matplotlib.pyplot as plt
+
+    # Visualize the first few samples
+    num_samples_to_visualize = min(5, len(generated_data["train"]))
+    for i in range(num_samples_to_visualize):
+        sample = generated_data["train"][i]
+        plt.figure(figsize=(30, 50))
+        plt.subplot(num_samples_to_visualize, 3, 3 * i + 1)
+        plt.imshow(sample["true_data"].squeeze(), cmap="gray")
+        plt.title(f"True Image {i+1}")
+        plt.axis("off")
+
+        plt.subplot(num_samples_to_visualize, 3, 3 * i + 2)
+        plt.imshow(sample["image"].squeeze(), cmap="gray")
+        plt.title(f"Generated Image {i+1}")
+        plt.axis("off")
+
+        plt.subplot(num_samples_to_visualize, 3, 3 * i + 3)
+        plt.imshow(sample["mask"].squeeze(), cmap="gray")
+        plt.title(f"True Image {i+1}")
+        plt.axis("off")
+
+        plt.show()
+
     print(f"Generated data saved to {output_path}")
 
 

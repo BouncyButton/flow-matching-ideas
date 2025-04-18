@@ -3,3 +3,4 @@ data/
 *checkpoints*
 *.pth
 *.pkl
+cdd_cesm_dataset.pkl

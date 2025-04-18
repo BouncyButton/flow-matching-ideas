@@ -227,16 +227,27 @@ def validate_and_save_samples(
     for batch in tqdm(val_loader, desc="Validating"):
         imgs = batch["images"].to(device)
         cond = batch["classes"].to(device).unsqueeze(1) if class_conditioning else None
+<<<<<<< HEAD
         # masks = batch["masks"].to(device) if mask_conditioning else None
         masks = None
 
         x_init = torch.randn_like(imgs)
+=======
+        masks = batch["masks"].to(device) if mask_conditioning else None
+        # masks = None
+
+        x_init = imgs  # torch.randn_like(imgs)
+>>>>>>> 3b8d528 (update validation logic)
         sol = sample_with_solver(
             model,
             x_init,
             solver_config,
             cond=cond,
+<<<<<<< HEAD
             masks=masks,
+=======
+            masks=None,
+>>>>>>> 3b8d528 (update validation logic)
         )
         final_imgs = sol[-1] if sol.dim() == 5 else sol
         for i in range(final_imgs.size(0)):
