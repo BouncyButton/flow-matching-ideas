@@ -104,7 +104,7 @@ def load_and_prepare_data(
     Images = torch.cat(image_list, dim=0)  # [N, H, W]
     assert Images.dim() == 3, f"Expected 3D tensor, got {Images.shape}"
     Images = Images.unsqueeze(1)  # [N, 1, H, W]
-    Images = normalize_zero_to_one(Images)
+    # Images = normalize_zero_to_one(Images)
 
     Masks = torch.cat(mask_list, dim=0)  # [N, H, W]
     assert Masks.dim() == 3, f"Expected 3D tensor, got {Masks.shape}"
@@ -118,7 +118,7 @@ def load_and_prepare_data(
         # Combine mask_new with Y
         Masks = Masks * mask_new
         Masks = Masks + mask_new
-    Masks = normalize_zero_to_one(Masks)
+    # Masks = normalize_zero_to_one(Masks)
 
     # Convert classes to one-hot if required
     if convert_classes_to_onehot:

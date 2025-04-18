@@ -243,14 +243,17 @@ def validate_and_save_samples(
         for i in range(final_imgs.size(0)):
             if count >= max_samples:
                 break
-            gen_img = normalize_zero_to_one(final_imgs[i])
-            real_img = normalize_zero_to_one(imgs[i])
+            # gen_img = normalize_zero_to_one(final_imgs[i])
+            # real_img = normalize_zero_to_one(imgs[i])
+            gen_img = final_imgs[i]
+            real_img = imgs[i]
             sdir = os.path.join(outdir, f"sample_{count + 1:03d}")
             os.makedirs(sdir, exist_ok=True)
             save_image(gen_img, os.path.join(sdir, "gen.png"))
             save_image(real_img, os.path.join(sdir, "real.png"))
             if masks is not None:
-                cnd_img = normalize_zero_to_one(masks[i])
+                # cnd_img = normalize_zero_to_one(masks[i])
+                cnd_img = masks[i]
                 save_image(cnd_img, os.path.join(sdir, "mask.png"))
             if class_map and "classes" in batch:
                 idx = batch["classes"][i].argmax().item()
