@@ -186,7 +186,7 @@ def plot_solver_steps(sol, im_batch, mask_batch, class_batch, class_map, outdir,
             if i == 0:
                 axes[i][col].set_title("Mask")
             col += 1
-        axes[i][col].imshow(im_batch[i].cpu().numpy().squeeze(), cmap="gray")
+        axes[i][col].imshow(mask_batch[i].cpu().numpy().squeeze(), cmap="gray")
         axes[i][col].axis("off")
         if i == 0:
             axes[i][col].set_title("Real")
