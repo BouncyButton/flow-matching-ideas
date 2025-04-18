@@ -4,3 +4,4 @@ data/
 *.pth
 *.pkl
 cdd_cesm_dataset.pkl
+.DS_Store
